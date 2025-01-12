@@ -9,7 +9,7 @@ export const OtherError = () => {
         <Image src={logos.mainLogoTransparent} w={100} />
       </Flex>
 
-      <Title c={"amaranthRed.5"}>SOMETHING WENT WRONG</Title>
+      <Title c={"blue.6"}>SOMETHING WENT WRONG</Title>
       <Text c={"gray.5"}>
         Sorry for the inconvenience. Something is not sitting right in our
         system.

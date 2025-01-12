@@ -21,7 +21,7 @@ export const CustomBreadcrumbs = () => {
         py={rem(1)}
         separator={
           <RiArrowRightSLine
-            color="var(--mantine-color-amaranthRed-5)"
+            color="var(--mantine-color-blue-5)"
             size={16}
           />
         }

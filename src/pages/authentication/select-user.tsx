@@ -1,4 +1,4 @@
-import { SelectUserForm } from "@/components/select-user/select-user";
+import { SelectUserForm } from "@/components/select-user";
 import Head from "next/head";
 
 export default function SelectUser() {

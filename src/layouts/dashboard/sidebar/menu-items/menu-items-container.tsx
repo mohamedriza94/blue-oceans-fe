@@ -16,8 +16,8 @@ export const MenuItemsContainer = ({ isMinimized }: MenuItemsProps) => {
     <MenuItemsSkeleton />
   ) : !menuItems?.length ? (
     <Stack align="center" justify="center" gap={"xs"} flex={1}>
-      <RiLockFill color="var(--mantine-color-amaranthRed-5)" />
-      <Text fw={700} size="lg" c="amaranthRed.5" ta={'center'}>
+      <RiLockFill color="var(--mantine-color-blue-5)" />
+      <Text fw={700} size="lg" c="blue.6" ta={'center'}>
         Access Denied
       </Text>
     </Stack>

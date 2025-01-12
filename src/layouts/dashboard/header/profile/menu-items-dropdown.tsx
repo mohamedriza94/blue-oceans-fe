@@ -1,5 +1,4 @@
 import { CustomMantineDrawer } from "@/shared/components/custom-mantine-drawer";
-import { useStaffLogout } from "@/shared/hooks/use-staff-logout";
 import { Menu } from "@mantine/core";
 import {
   RiKey2Line,
@@ -9,6 +8,8 @@ import {
 import { useState } from "react";
 import { MyAccount } from "./menu-content/my-account";
 import { ChangePassword } from "./menu-content/change-password";
+import { useUserLogout } from "@/shared/hooks/use-user-logout";
+import { useUserTypeStore } from "@/shared/stores/user-type-store";
 
 type TMenuItem = {
   icon?: (color: string) => React.ReactNode;
@@ -16,6 +17,7 @@ type TMenuItem = {
   onClick?: () => void;
   color?: string;
   isDivider?: boolean;
+  hidden?: boolean;
 };
 
 type MenuItemsDropdownProps = {
@@ -23,7 +25,8 @@ type MenuItemsDropdownProps = {
 };
 
 export const MenuItemsDropdown = ({ isDesktop }: MenuItemsDropdownProps) => {
-  const { performLogout } = useStaffLogout();
+  const { performLogout } = useUserLogout();
+  const { userType } = useUserTypeStore();
 
   // START : OPEN DRAWER CONTROLS
   const [drawerContent, setDrawerContent] = useState<React.ReactNode>(null);
@@ -40,19 +43,18 @@ export const MenuItemsDropdown = ({ isDesktop }: MenuItemsDropdownProps) => {
       color: "var(--mantine-color-darkBrown-6)",
       icon: (color) => <RiSettings3Line color={color} size={20} />,
       onClick: () => handleMenuItemClick(<MyAccount />),
+      hidden: userType === "admin",
     },
     {
       label: "Change Password",
       color: "var(--mantine-color-darkBrown-6)",
       icon: (color) => <RiKey2Line color={color} size={20} />,
       onClick: () => handleMenuItemClick(<ChangePassword />),
-    },
-    {
-      isDivider: true,
+      hidden: userType === "admin",
     },
     {
       label: "Logout",
-      color: "var(--mantine-color-amaranthRed-6)",
+      color: "var(--mantine-color-blue-6)",
       icon: (color) => <RiLogoutCircleLine color={color} size={20} />,
       onClick: performLogout,
     },
@@ -62,8 +64,8 @@ export const MenuItemsDropdown = ({ isDesktop }: MenuItemsDropdownProps) => {
     <>
       <Menu.Dropdown>
         {menuItems.map((item, index) => {
-          if (item.isDivider) {
-            return <Menu.Divider key={index} />;
+          if (item.hidden) {
+            return;
           }
           return (
             <Menu.Item

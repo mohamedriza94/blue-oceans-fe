@@ -16,19 +16,19 @@ import { CustomFile } from "../../types";
 const getIconForFileType = (file: File) => {
   if (PDF_MIME_TYPE.includes(file.type as any)) {
     return (
-      <RiFilePdf2Line size={30} color={"var(--mantine-color-amaranthRed-4)"} />
+      <RiFilePdf2Line size={30} color={"var(--mantine-color-blue-4)"} />
     );
   } else if (MS_EXCEL_MIME_TYPE.includes(file.type as any)) {
     return (
-      <RiFileExcelLine size={30} color={"var(--mantine-color-amaranthRed-4)"} />
+      <RiFileExcelLine size={30} color={"var(--mantine-color-blue-4)"} />
     );
   } else if (MS_WORD_MIME_TYPE.includes(file.type as any)) {
     return (
-      <RiFileWordLine size={30} color={"var(--mantine-color-amaranthRed-4)"} />
+      <RiFileWordLine size={30} color={"var(--mantine-color-blue-4)"} />
     );
   } else {
     return (
-      <RiFile3Line size={30} color={"var(--mantine-color-amaranthRed-4)"} />
+      <RiFile3Line size={30} color={"var(--mantine-color-blue-4)"} />
     );
   }
 };

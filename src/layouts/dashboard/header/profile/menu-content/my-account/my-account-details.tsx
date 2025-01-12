@@ -1,4 +1,4 @@
-import { TStaffMember } from "@/shared/stores/staff-member-store";
+import { TStaffMember } from "@/shared/stores/user-store";
 import { Avatar, Indicator, rem, Stack, TextInput } from "@mantine/core";
 
 type MyAccountDetailsProps = {

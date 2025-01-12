@@ -20,7 +20,7 @@ export const MenuItemsList = ({ isMinimized, items }: MenuItemsListProps) => {
           menuItem.submenus.some((submenu) => pathname === submenu.href));
 
       const activeColor = isActive
-        ? "var(--mantine-color-amaranthRed-5)"
+        ? "var(--mantine-color-blue-5)"
         : "var(--mantine-color-darkBrown-6)";
 
       return (
@@ -32,7 +32,7 @@ export const MenuItemsList = ({ isMinimized, items }: MenuItemsListProps) => {
         >
           <NavLink
             c={activeColor}
-            color="amaranthRed.5"
+            color="blue.6"
             fw={600}
             component={Link}
             active={isActive}

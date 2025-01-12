@@ -33,7 +33,7 @@ export const useFileDrop = (
 
     showNotification({
       position: "top-right",
-      color: "amaranthRed.4",
+      color: "blue.5",
       message: rejectionMessages,
     });
   };

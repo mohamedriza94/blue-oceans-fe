@@ -9,7 +9,7 @@ export const PageNotFoundError = () => {
         <Image src={logos.mainLogoTransparent} w={100} />
       </Flex>
 
-      <Title c={"amaranthRed.5"}>404. PAGE NOT FOUND</Title>
+      <Title c={"blue.6"}>404. PAGE NOT FOUND</Title>
       <Text c={"gray.5"}>
         You seemed to have tried to access a page that doesn't exist
       </Text>

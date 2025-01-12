@@ -1,15 +1,11 @@
 import { axiosPrivate } from "@/shared/lib/axios/private";
-import {
-  TStaffMember,
-  useStaffMemberStore,
-} from "@/shared/stores/staff-member-store";
 import { useTokenStore } from "@/shared/stores/token-store";
 import { ShowErrors } from "@/shared/utils/show-errors";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect } from "react";
 
 const fetchMyAccountDetails = async (): Promise<{
-  data: TStaffMember;
+  data: any;
 }> => {
   return axiosPrivate.get("/me/read-my-account");
 };
@@ -26,12 +22,12 @@ const useGetMyAccountDetailsQuery = () => {
 };
 
 export const useGetMyAccountDetails = () => {
-  const { setStaffMember } = useStaffMemberStore();
+  // const { setStaffMember } = useStaffMemberStore();
   const myAccountDetailsQuery = useGetMyAccountDetailsQuery();
 
   useEffect(() => {
     if (myAccountDetailsQuery.isSuccess) {
-      setStaffMember(myAccountDetailsQuery.data);
+      // setStaffMember(myAccountDetailsQuery.data);
     }
   }, [myAccountDetailsQuery.isSuccess]);
 

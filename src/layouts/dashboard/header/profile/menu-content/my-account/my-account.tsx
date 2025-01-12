@@ -2,7 +2,6 @@ import { Stack, Text } from "@mantine/core";
 import { useGetMyAccountDetails } from "../../hooks/get-my-account-details-api";
 import { MyAccountSkeleton } from "./my-account-skeleton";
 import { MyAccountDetails } from "./my-account-details";
-import { TwoFASwitch } from "./2fa-switch";
 
 export const MyAccount = () => {
   const { data: myAccount, isLoading } = useGetMyAccountDetails();
@@ -18,8 +17,6 @@ export const MyAccount = () => {
       ) : (
         <>
           <MyAccountDetails myAccount={myAccount} />
-
-          <TwoFASwitch myAccount={myAccount} />
         </>
       )}
     </Stack>

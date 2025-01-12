@@ -1,4 +1,6 @@
-import { useStaffMemberStore } from "@/shared/stores/staff-member-store";
+import { useUserStore } from "@/shared/stores/user-store";
+import { useUserTypeStore } from "@/shared/stores/user-type-store";
+import { unslugText } from "@/shared/utils/unslug";
 import { Avatar, Flex, Menu, rem, Stack, Text } from "@mantine/core";
 import { RiArrowDownSLine } from "@remixicon/react";
 
@@ -7,7 +9,8 @@ type MenuTargetProps = {
 };
 
 export const MenuTarget = ({ isDesktop }: MenuTargetProps) => {
-  const { staffMember } = useStaffMemberStore();
+  const { user } = useUserStore();
+  const { userType } = useUserTypeStore();
 
   return (
     <Menu.Target>
@@ -19,20 +22,20 @@ export const MenuTarget = ({ isDesktop }: MenuTargetProps) => {
         }}
       >
         <Avatar
-          src={staffMember?.avatar}
+          src={user?.fullName}
           alt="it's me"
           size={isDesktop ? "sm" : "md"}
-          color="amaranthRed.6"
+          color="blue.6"
         />
 
         {isDesktop ? (
           <>
             <Stack gap={rem(0)} justify="center">
               <Text c={"gray.8"} size={"xs"} fw={600}>
-                {staffMember?.fullName}
+                {user?.fullName}
               </Text>
               <Text c={"gray.8"} size={"xs"} fw={400} tt={"capitalize"}>
-                {staffMember?.roles.join(" | ")}
+                {unslugText(userType ?? "")}
               </Text>
             </Stack>
             <RiArrowDownSLine />

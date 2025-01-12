@@ -39,7 +39,7 @@ export const DashboardHeader = ({
         <Burger
           size="sm"
           lineSize={"3"}
-          color="amaranthRed.5"
+          color="blue.6"
           opened={isMinimized}
           onClick={() => toggleMinimized()}
         />
@@ -52,7 +52,7 @@ export const DashboardHeader = ({
         flex={1}
         pr={sidePadding}
       >
-        <Text fw={700} fz={"h3"} c={"amaranthRed.5"} tt={"capitalize"}>
+        <Text fw={700} fz={"h3"} c={"blue.6"} tt={"capitalize"}>
           {firstPathSegment}
         </Text>
 

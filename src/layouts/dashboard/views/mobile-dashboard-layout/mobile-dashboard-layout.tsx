@@ -13,7 +13,7 @@ export const MobileDashboardLayout = ({
     <Stack
       h={"100vh"}
       w={"100%"}
-      bg={"amaranthRed.6"}
+      bg={"blue.6"}
       align="stretch"
       justify="space-between"
     >

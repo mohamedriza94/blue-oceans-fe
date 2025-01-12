@@ -95,7 +95,7 @@ export const DataSearch = ({
           <Tooltip label={"Advanced Search"}>
             <ActionIcon
               size={elementSizes ?? "md"}
-              color="amaranthRed.5"
+              color="blue.6"
               variant="transparent"
               onClick={toggle}
             >
@@ -123,7 +123,7 @@ export const DataSearch = ({
             fw={600}
             fz={elementSizes ?? "md"}
             ta={"center"}
-            c={"amaranthRed.5"}
+            c={"blue.6"}
           >
             Advanced Search
           </Text>
@@ -145,7 +145,7 @@ export const DataSearch = ({
               </Flex>
               <Group gap={rem(5)}>
                 <Button
-                  color="amaranthRed.5"
+                  color="blue.6"
                   type="submit"
                   loading={isLoading}
                   disabled={isLoading}

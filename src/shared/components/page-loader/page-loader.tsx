@@ -42,7 +42,7 @@ export const PageLoader = () => {
             }}
           >
             <Image w={30} src={logos.symbolOnlyTransparent} />
-            <Loader color="amaranthRed.5" size="xl" type="dots" />
+            <Loader color="blue.6" size="xl" type="dots" />
           </Stack>
         </Overlay>
       )}

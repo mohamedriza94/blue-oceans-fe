@@ -51,7 +51,7 @@ export const MobileHeader = () => {
           ),
         }}
         customTrigger={
-          <ActionIcon variant="transparent" color="amaranthRed.5">
+          <ActionIcon variant="transparent" color="blue.6">
             <RiMenuLine />
           </ActionIcon>
         }
@@ -59,7 +59,7 @@ export const MobileHeader = () => {
         <MenuItemsContainer isMinimized={false} />
       </CustomMantineDrawer>
 
-      <Text fw={600} fz={"xl"} c={"amaranthRed.6"} tt={"capitalize"}>
+      <Text fw={600} fz={"xl"} c={"blue.6"} tt={"capitalize"}>
         {firstPathSegment}
       </Text>
     </Flex>
