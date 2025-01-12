@@ -38,7 +38,10 @@ axiosPrivate.interceptors.response.use(
     const originalRequest = error.config;
 
     // Handle access denied
-    if (error.response.data.data.code == "ACCESS_DENIED") {
+    if (
+      error.response?.data?.data?.code &&
+      error.response?.data?.data?.code == "ACCESS_DENIED"
+    ) {
       showNotification({
         message: error.response.data.message[0],
         position: "top-center",
