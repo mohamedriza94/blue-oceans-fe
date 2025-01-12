@@ -78,7 +78,7 @@ axiosPrivate.interceptors.response.use(
 const redirectToLogin = () => {
   useTokenStore.getState().clearAccessToken();
   const attemptedPath = window.location.pathname + window.location.search;
-  window.location.href = `${unprotectedPaths.login}?redirect=${encodeURIComponent(
+  window.location.href = `${unprotectedPaths.selectUser}?redirect=${encodeURIComponent(
     attemptedPath,
   )}`;
 };
