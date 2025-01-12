@@ -2,6 +2,8 @@ import { ActionIcon, Menu } from "@mantine/core";
 import { RiEditLine, RiEye2Line, RiMore2Fill } from "@remixicon/react";
 import { useRef } from "react";
 import { TBuilding } from "../building-table";
+import { EditBuildingModal } from "../../edit-building";
+import { SeeParkingSlotsModal } from "../../see-parking-slots";
 
 type TProps = {
   building: TBuilding;
@@ -38,6 +40,12 @@ export const TdActions = ({ building }: TProps) => {
           </Menu.Item>
         </Menu.Dropdown>
       </Menu>
+
+      <EditBuildingModal building={building} updateModalRef={updateModalRef} />
+      <SeeParkingSlotsModal
+        building={building}
+        seeParkingSlotsModalRef={seeParkingSlotsModalRef}
+      />
     </>
   );
 };
