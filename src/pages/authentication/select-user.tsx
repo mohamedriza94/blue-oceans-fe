@@ -1,3 +1,4 @@
+import { SelectUserForm } from "@/components/select-user/select-user";
 import Head from "next/head";
 
 export default function SelectUser() {
@@ -6,7 +7,7 @@ export default function SelectUser() {
       <Head>
         <title>Select User</title>
       </Head>
-      This is the dashboard <br></br>
+      <SelectUserForm />
     </>
   );
 }

@@ -26,7 +26,7 @@ export const DashboardSidebar = ({ isMinimized }: DashboardSidebarProps) => {
         ""
       ) : (
         <Text fw={500} fz={rem(10)} ta={"center"}>
-          &copy; {currentYear} {"Savor Spree. All Rights Reserved"}
+          &copy; {currentYear} {"Blue Oceans. All Rights Reserved"}
         </Text>
       )}
     </Stack>

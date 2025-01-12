@@ -10,7 +10,7 @@ export const AuthenticationLayout = ({
   children,
 }: AuthenticationLayoutProps) => {
   return (
-    <Stack w={"100%"} h={"100vh"} align={"center"} bg={"amaranthRed.5"}>
+    <Stack w={"100%"} h={"100vh"} align={"center"} bg={"blue.6"}>
       <Stack h={"100%"} align={"stretch"} justify={"space-between"}>
         {/* Header */}
         <Flex
@@ -36,7 +36,7 @@ export const AuthenticationLayout = ({
           pb={rem(2)}
         >
           <Text fw={500} fz={"xs"}>
-            &copy; {currentYear} {"Savor Spree. All Rights Reserved"}
+            &copy; {currentYear} {"Blue Oceans. All Rights Reserved"}
           </Text>
         </Flex>
       </Stack>

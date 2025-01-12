@@ -104,7 +104,7 @@ export const mantineTheme = createTheme({
     ],
   },
   primaryColor: "blue",
-  primaryShade: 5,
+  primaryShade: 6,
   defaultRadius: "md",
   breakpoints: {
     mobile: "480px",
