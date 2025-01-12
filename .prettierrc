@@ -1,0 +1,18 @@
+{
+  "prettier/prettier": [
+    "error",
+    {
+      "singleQuote": true,
+      "trailingComma": "es5",
+      "semi": true,
+      "tabWidth": 2,
+      "bracketSpacing": true,
+      "arrowParens": "always"
+    },
+    {
+      "fileInfoOptions": {
+        "withNodeModules": true
+      }
+    }
+  ]
+}

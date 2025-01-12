@@ -1,0 +1,9 @@
+@import "@mantine/tiptap/styles.css";
+
+.custom-rich-text-editor {
+  .mantine-RichTextEditor-root {
+    border-radius: 10;
+    overflow: hidden;
+    background-color: #ffffff;
+  }
+}

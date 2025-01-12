@@ -1,0 +1,47 @@
+@import url('@mantine/core/styles.css');
+@import url('@mantine/notifications/styles.css');
+@import url('@mantine/dates/styles.css');
+@import url('@mantine/dropzone/styles.css');
+
+:root {
+  --font-family: 'Outfit', sans-serif;
+  --font-size-base: 16px;
+  --line-height-base: 1.5;
+
+  --background-color: var(--mantine-color-gray-1);
+  --text-color: var(--mantine-color-gray-9);
+
+  --default-spacing: 16px;
+
+  &::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  &::-webkit-scrollbar-track {
+    background: var(--mantine-color-gray-2);
+    border-radius: 8px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: var(--mantine-color-gray-3);
+    border-radius: 8px;
+    border: 2px solid var(--mantine-color-gray-2);
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background: var(--mantine-color-gray-3);
+  }
+  // Firefox Scrollbar Styling
+  scrollbar-width: thin;
+  scrollbar-color: var(--mantine-color-amaranthRed-5) var(--mantine-color-gray-2);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  font-family: 'Outfit', sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--mantine-color-gray-9);
+  background-color: var(--mantine-color-amaranthRed-5);
+}
