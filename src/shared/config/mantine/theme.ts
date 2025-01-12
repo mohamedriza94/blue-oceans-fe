@@ -103,7 +103,7 @@ export const mantineTheme = createTheme({
       colors.blue[1000],
     ],
   },
-  primaryColor: "amaranthRed",
+  primaryColor: "blue",
   primaryShade: 5,
   defaultRadius: "md",
   breakpoints: {

@@ -1,5 +1,5 @@
 import { logos } from "@/shared/constants/general";
-import { ActionIcon, Box, Burger, Flex, Image, rem, Text } from "@mantine/core";
+import { Box, Burger, Flex, Image, rem, Text } from "@mantine/core";
 import { Notifications } from "./notifications";
 import { FullScreenToggle } from "./fullscreen-toggle";
 import { Profile } from "./profile";
@@ -7,7 +7,6 @@ import Link from "next/link";
 import { protectedPaths } from "@/shared/constants/paths";
 import { useRouter } from "next/router";
 import { unslugText } from "@/shared/utils/unslug";
-import { RiCloseLine, RiMenuLine } from "@remixicon/react";
 import { SetStateAction } from "react";
 
 type DashboardHeaderProps = {
@@ -33,7 +32,7 @@ export const DashboardHeader = ({
         w={rem(200)}
         px={sidePadding}
       >
-        <Box component={Link} passHref href={protectedPaths.dashboard}>
+        <Box component={Link} passHref href={protectedPaths.dashboard.path}>
           <Image src={logos.mainLogoTransparent} h={35} />
         </Box>
 

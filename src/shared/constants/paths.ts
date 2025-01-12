@@ -1,27 +1,42 @@
+import {
+  RiDashboardFill,
+  RiBuildingFill,
+  RiHome5Fill,
+  RiUser3Fill,
+  RiCalendarEventFill,
+  RiFileList3Fill,
+} from "@remixicon/react";
+
 export const protectedPaths = {
-  dashboard: "/dashboard",
-  menus: {
-    create: "/menus/create",
-    list: "/menus/list",
+  dashboard: {
+    icon: RiDashboardFill,
+    path: "/dashboard",
+    name: "Dashboard",
   },
-  staffMembers: "/staff-members",
-  settings: "/settings",
-  inquiries: "/inquiries",
-  ingredients: {
-    create: "/ingredients/create",
-    list: "/ingredients/list",
+  building: {
+    icon: RiBuildingFill,
+    path: "/building",
+    name: "Buildings",
   },
-  categories: {
-    create: "/categories/create",
-    list: "/categories/list",
+  apartment: {
+    icon: RiHome5Fill,
+    path: "/apartment",
+    name: "Apartments",
   },
-  recipes: {
-    create: "/recipes/create",
-    list: "/recipes/list",
+  chiefOccupant: {
+    icon: RiUser3Fill,
+    path: "/chief-occupant",
+    name: "Chief Occupants",
   },
-  blogs: {
-    create: "/blogs/create",
-    list: "/blogs/list",
+  reservation: {
+    icon: RiCalendarEventFill,
+    path: "/reservation",
+    name: "Reservations",
+  },
+  application: {
+    icon: RiFileList3Fill,
+    path: "/application",
+    name: "Applications",
   },
 };
 
@@ -29,7 +44,7 @@ export const protectedPaths = {
 
 export const prefixOfUnprotectedPaths = "/authentication";
 export const unprotectedPaths = {
-  login: `${prefixOfUnprotectedPaths}/login`,
-  forgotPassword: `${prefixOfUnprotectedPaths}/forgot-password`,
-  resetPassword: `${prefixOfUnprotectedPaths}/reset-password`,
+  selectUser: `${prefixOfUnprotectedPaths}/select-user`,
+  adminLogin: `${prefixOfUnprotectedPaths}/admin-login`,
+  chiefOccupantLogin: `${prefixOfUnprotectedPaths}/chief-occupant-login`,
 };

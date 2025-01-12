@@ -14,7 +14,7 @@ export const PageNotFoundError = () => {
         You seemed to have tried to access a page that doesn't exist
       </Text>
 
-      <Button component="a" href={protectedPaths.dashboard}>
+      <Button component="a" href={protectedPaths.dashboard.path}>
         Go Home
       </Button>
     </>

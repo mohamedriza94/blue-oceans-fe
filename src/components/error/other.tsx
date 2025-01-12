@@ -15,7 +15,7 @@ export const OtherError = () => {
         system.
       </Text>
 
-      <Button component="a" href={protectedPaths.dashboard}>
+      <Button component="a" href={protectedPaths.dashboard.path}>
         Go Home
       </Button>
     </>
