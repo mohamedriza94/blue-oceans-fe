@@ -1,23 +1,19 @@
 import { getIconComponent } from "@/shared/utils/dynamic-render-remix-icons";
-import { IMenuItem } from "../hooks/use-get-menu-items-api";
 import { NavLink, rem, Stack, Tooltip } from "@mantine/core";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import { protectedPaths } from "@/shared/constants/paths";
 
 type MenuItemsListProps = {
   isMinimized: boolean;
-  items: IMenuItem[];
 };
 
-export const MenuItemsList = ({ isMinimized, items }: MenuItemsListProps) => {
+export const MenuItemsList = ({ isMinimized }: MenuItemsListProps) => {
   const { pathname } = useRouter();
 
-  const renderMenuItems = (menuItems: IMenuItem[]) => {
-    return menuItems.map((menuItem, index) => {
-      const isActive =
-        pathname === menuItem.href ||
-        (menuItem.submenus &&
-          menuItem.submenus.some((submenu) => pathname === submenu.href));
+  const renderMenuItems = () => {
+    return Object.values(protectedPaths).map((menuItem, index) => {
+      const isActive = pathname === menuItem.path;
 
       const activeColor = isActive
         ? "var(--mantine-color-blue-5)"
@@ -25,8 +21,8 @@ export const MenuItemsList = ({ isMinimized, items }: MenuItemsListProps) => {
 
       return (
         <Tooltip
-          label={isMinimized ? menuItem.label : menuItem.description}
-          key={`${menuItem.label}-${index}`}
+          label={menuItem.name}
+          key={`${menuItem.name}-${index}`}
           position="right-end"
           className="menu-items-custom-class"
         >
@@ -38,10 +34,8 @@ export const MenuItemsList = ({ isMinimized, items }: MenuItemsListProps) => {
             active={isActive}
             defaultOpened={isActive}
             passHref
-            href={
-              menuItem.submenus?.length ? "javascript:void(0)" : menuItem.href
-            }
-            label={isMinimized ? "" : menuItem.label}
+            href={menuItem.path}
+            label={isMinimized ? "" : menuItem.name}
             childrenOffset={15}
             style={{
               borderRadius: rem(5),
@@ -50,19 +44,7 @@ export const MenuItemsList = ({ isMinimized, items }: MenuItemsListProps) => {
               color: activeColor,
               size: 20,
             })}
-            rightSection={
-              menuItem.submenus?.length
-                ? getIconComponent("RiArrowRightSLine", {
-                    size: 18,
-                    color: activeColor,
-                  })
-                : ""
-            }
-          >
-            {menuItem.submenus?.length
-              ? renderMenuItems(menuItem.submenus)
-              : null}
-          </NavLink>
+          ></NavLink>
         </Tooltip>
       );
     });
@@ -70,7 +52,7 @@ export const MenuItemsList = ({ isMinimized, items }: MenuItemsListProps) => {
 
   return (
     <Stack align="stretch" justify="flex-start" gap={rem(5)}>
-      {renderMenuItems(items)}
+      {renderMenuItems()}
     </Stack>
   );
 };

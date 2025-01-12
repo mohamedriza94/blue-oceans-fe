@@ -9,7 +9,6 @@ type DashboardSidebarProps = {
 export const DashboardSidebar = ({ isMinimized }: DashboardSidebarProps) => {
   return (
     <Stack
-      w={isMinimized ? 100 : ""}
       justify="space-between"
       align="stretch"
       gap={"xs"}

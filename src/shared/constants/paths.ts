@@ -1,40 +1,31 @@
-import {
-  RiDashboardFill,
-  RiBuildingFill,
-  RiHome5Fill,
-  RiUser3Fill,
-  RiCalendarEventFill,
-  RiFileList3Fill,
-} from "@remixicon/react";
-
 export const protectedPaths = {
   dashboard: {
-    icon: RiDashboardFill,
+    icon: "RiDashboardFill",
     path: "/dashboard",
     name: "Dashboard",
   },
   building: {
-    icon: RiBuildingFill,
+    icon: "RiBuildingFill",
     path: "/building",
     name: "Buildings",
   },
   apartment: {
-    icon: RiHome5Fill,
+    icon: "RiHome5Fill",
     path: "/apartment",
     name: "Apartments",
   },
   chiefOccupant: {
-    icon: RiUser3Fill,
+    icon: "RiUser3Fill",
     path: "/chief-occupant",
     name: "Chief Occupants",
   },
   reservation: {
-    icon: RiCalendarEventFill,
+    icon: "RiCalendarEventFill",
     path: "/reservation",
     name: "Reservations",
   },
   application: {
-    icon: RiFileList3Fill,
+    icon: "RiFileList3Fill",
     path: "/application",
     name: "Applications",
   },
