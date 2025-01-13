@@ -4,7 +4,7 @@ import { DataSearch } from "@/shared/components/data-search";
 import { CustomMantineModal } from "@/shared/components/custom-mantine-modal";
 import { ActionIcon, Select, Tooltip } from "@mantine/core";
 import { RiAddLine } from "@remixicon/react";
-import { AddBuilding } from "../add-building";
+import { AddApartment } from "../add-apartment";
 import { useRef } from "react";
 import { SelectBuilding } from "./select-building";
 
@@ -55,7 +55,7 @@ export const SearchApartment = ({
               </ActionIcon>
             </Tooltip>
           }
-          size={"sm"}
+          size={"md"}
           withCloseButton
           title="Add Apartment"
           styles={{
@@ -65,7 +65,7 @@ export const SearchApartment = ({
           }}
           centered
         >
-          <AddBuilding closeModal={() => addModalRef.current?.close()} />
+          <AddApartment closeModal={() => addModalRef.current?.close()} />
         </CustomMantineModal>
       }
     >
@@ -100,12 +100,6 @@ export const SearchApartment = ({
           form.setFieldValue("class", value as TApartmentQueryParams["class"]);
         }}
         key={form.key("class")}
-      />
-
-      <SelectBuilding
-        setValue={(value) => form.setFieldValue("buildingId", value)}
-        value={form.values.buildingId}
-        disabled={isLoadingList}
       />
     </DataSearch>
   );

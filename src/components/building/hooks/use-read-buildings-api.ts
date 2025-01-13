@@ -30,12 +30,12 @@ const getBuildingsQueryOptions = ({
   });
 };
 
-export const useGetBuildings = () => {
+export const useGetBuildings = (limit = 10) => {
   const initialFilters: TBuildingQueryParams = {
     buildingName: null,
     address: null,
     page: 1,
-    limit: 10,
+    limit: limit,
   };
 
   const [filters, setFilters] = useState<TBuildingQueryParams>(initialFilters);
