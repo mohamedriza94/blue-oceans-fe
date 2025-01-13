@@ -1,10 +1,14 @@
 import { Flex, rem, Skeleton, Stack, Table } from "@mantine/core";
 
-export const BuildingTableSkeleton = () => {
+export const ApartmentTableSkeleton = () => {
   const skeletonRows = Array.from({ length: 6 });
 
   return skeletonRows.map((_) => (
     <Table.Tr>
+      <Table.Td>
+        <Skeleton h={15} w={150} />
+      </Table.Td>
+
       <Table.Td>
         <Skeleton h={15} w={150} />
       </Table.Td>

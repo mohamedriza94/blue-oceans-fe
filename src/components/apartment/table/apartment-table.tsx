@@ -1,25 +1,27 @@
 import { Badge, rem, Stack, Table, Text } from "@mantine/core";
-import { BuildingTableSkeleton } from "./table-skeleton";
+import { ApartmentTableSkeleton } from "./table-skeleton";
 import { TdActions } from "./data/actions";
 import { TableError } from "@/shared/components/table-error";
 import { CustomPagination } from "@/shared/components/pagination";
+import { TImage } from "@/shared/types/image";
 
-export type TBuilding = {
-  _id?: string;
-  buildingName: string;
+export type TApartment = {
+  buildingId: {
+    _id: string;
+    buildingName: string;
+  };
   telephone: string;
-  address: string;
-  parkingSlots: number;
-};
-
-type TBuildingWithApartmentCount = TBuilding & {
-  apartmentCount: number;
+  images?: TImage[];
+  description: string;
+  identification: string;
+  class: "Luxury" | "Standard" | "Studio" | "Penthouse" | "Duplex";
+  status: "Available" | "Occupied" | "Maintenance";
 };
 
 type TProps = {
   isLoading: boolean;
   isError: boolean;
-  buildings: TBuildingWithApartmentCount[];
+  apartments: TApartment[];
   paginate: (type: "change-limit" | "paginate", value: number) => void;
   pagination: {
     total: number;
@@ -31,17 +33,18 @@ type TProps = {
 
 const columns = [
   "Building Name",
+  "Apartment No.",
   "Telephone",
-  "Apartments",
-  "Parking Slots",
+  "Class",
+  "Status",
   "Actions",
 ];
 
-export const BuildingTable = ({
+export const ApartmentTable = ({
   isLoading,
   isError,
   paginate,
-  buildings,
+  apartments,
   pagination,
 }: TProps) => {
   return (
@@ -67,37 +70,46 @@ export const BuildingTable = ({
             </Table.Thead>
             <Table.Tbody>
               {isLoading ? (
-                <BuildingTableSkeleton />
+                <ApartmentTableSkeleton />
               ) : (
-                buildings.map((building, index) => (
-                  <Table.Tr key={index + building.buildingName}>
+                apartments.map((apartment, index) => (
+                  <Table.Tr key={index + apartment.identification}>
                     <Table.Td>
-                      <Text lineClamp={1} title={building.buildingName}>
-                        {building.buildingName}
+                      <Text
+                        lineClamp={1}
+                        title={apartment.buildingId.buildingName}
+                      >
+                        {apartment.buildingId.buildingName}
                       </Text>
                     </Table.Td>
 
                     <Table.Td>
-                      <Text lineClamp={1} title={building.buildingName}>
-                        {building.telephone}
+                      <Text lineClamp={1} title={apartment.identification}>
+                        {apartment.identification}
                       </Text>
                     </Table.Td>
 
                     <Table.Td>
-                      <Badge fz={"sm"} variant="light" color="blue.6">
-                        {building.apartmentCount ?? 0}
-                      </Badge>
+                      <Text lineClamp={1} title={apartment.telephone}>
+                        {apartment.telephone}
+                      </Text>
                     </Table.Td>
 
                     <Table.Td>
-                      <Badge fz={"sm"} variant="light" color="blue.6">
-                        {building.parkingSlots}
-                      </Badge>
+                      <Text lineClamp={1} title={apartment.class}>
+                        {apartment.class}
+                      </Text>
+                    </Table.Td>
+
+                    <Table.Td>
+                      <Text lineClamp={1} title={apartment.status}>
+                        {apartment.status}
+                      </Text>
                     </Table.Td>
 
                     {/* Actions */}
                     <Table.Td>
-                      <TdActions building={building} />
+                      <TdActions apartment={apartment} />
                     </Table.Td>
                   </Table.Tr>
                 ))
