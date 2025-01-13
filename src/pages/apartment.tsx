@@ -1,4 +1,4 @@
-import { BuildingComponent } from "@/components/building";
+import { ApartmentComponent } from "@/components/apartment";
 import { protectedPaths } from "@/shared/constants/paths";
 import useBreadcrumbStore from "@/shared/stores/breadcrumb-store";
 import Head from "next/head";
@@ -10,8 +10,8 @@ export default function Building() {
   useEffect(() => {
     setBreadcrumbs([
       {
-        label: "Building",
-        href: protectedPaths.building.path,
+        label: "Apartment",
+        href: protectedPaths.apartment.path,
       },
     ]);
   }, []);
@@ -19,9 +19,9 @@ export default function Building() {
   return (
     <>
       <Head>
-        <title>Building</title>
+        <title>Apartment</title>
       </Head>
-      <BuildingComponent />
+      <ApartmentComponent />
     </>
   );
 }
