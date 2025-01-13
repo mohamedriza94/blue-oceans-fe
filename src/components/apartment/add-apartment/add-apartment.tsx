@@ -15,7 +15,7 @@ type TProps = {
   closeModal: () => void;
 };
 
-type TOption = {
+export type TOption = {
   label: string;
   value: string;
 };

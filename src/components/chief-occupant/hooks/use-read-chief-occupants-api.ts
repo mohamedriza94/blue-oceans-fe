@@ -5,49 +5,48 @@ import { queryOptions, useQuery } from "@tanstack/react-query";
 import qs from "query-string";
 import { useState } from "react";
 
-export type TApartmentQueryParams = {
-  buildingId?: string | null;
-  identification?: string | null;
-  status?: "Available" | "Occupied" | "Maintenance" | null;
-  class?: "Luxury" | "Standard" | "Studio" | "Penthouse" | "Duplex" | null;
+export type TChiefOccupantQueryParams = {
+  apartmentId?: string | null;
+  fullName?: string | null;
+  status?: "Active" | "Inactive" | null;
 } & TPaginationParams;
 
 const fetchData = (query: string) => {
-  return axiosPrivate.get(`/apartment/read-many-apartments?${query}`);
+  return axiosPrivate.get(`/chief-occupant/read-many?${query}`);
 };
 
-const getApartmentsQueryOptions = ({
+const getChiefOccupantsQueryOptions = ({
   params,
 }: {
-  params: TApartmentQueryParams;
+  params: TChiefOccupantQueryParams;
 }) => {
   const filteredQuery = qs.stringify(params, {
     skipNull: true,
     skipEmptyString: true,
   });
   return queryOptions({
-    queryKey: ["apartments-list", filteredQuery],
+    queryKey: ["chief-occupants-list", filteredQuery],
     queryFn: () => fetchData(filteredQuery),
   });
 };
 
-export const useGetApartments = (limit = 10) => {
-  const initialFilters: TApartmentQueryParams = {
-    buildingId: null,
-    identification: null,
+export const useGetChiefOccupants = (limit = 10) => {
+  const initialFilters: TChiefOccupantQueryParams = {
+    apartmentId: null,
+    fullName: null,
     status: null,
-    class: null,
     page: 1,
     limit: limit,
   };
 
-  const [filters, setFilters] = useState<TApartmentQueryParams>(initialFilters);
+  const [filters, setFilters] =
+    useState<TChiefOccupantQueryParams>(initialFilters);
 
   const form = useForm({
     initialValues: initialFilters,
   });
 
-  const applyFilters = (newFilters: Partial<TApartmentQueryParams>) => {
+  const applyFilters = (newFilters: Partial<TChiefOccupantQueryParams>) => {
     const currentLimit = filters.limit;
     setFilters((prev) => ({
       ...prev,
@@ -73,7 +72,7 @@ export const useGetApartments = (limit = 10) => {
   };
 
   const reactQuery = useQuery({
-    ...getApartmentsQueryOptions({ params: filters }),
+    ...getChiefOccupantsQueryOptions({ params: filters }),
   });
 
   return {
