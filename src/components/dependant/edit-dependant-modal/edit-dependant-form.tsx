@@ -1,18 +1,19 @@
 import { Grid, Stack, Text, TextInput } from "@mantine/core";
-import { UploadAvatar } from "./inputs/upload-avatar";
-import { ActionButtons } from "./inputs/action-buttons";
+import { UploadAvatar } from "@/components/chief-occupant/add-chief-occupant/inputs/upload-avatar";
+import { DateInput } from "@mantine/dates";
+import { ActionButtons } from "@/components/apartment/add-apartment/action-buttons";
+import { TDependant } from "../table";
+import { useEditDependantForm } from "../hooks/edit-dependant/use-edit-dependant-form";
 import { useEffect } from "react";
-import { TChiefOccupant } from "../table";
-import { useEditChiefOccupantForm } from "../hooks/edit-chief-occupant/use-edit-chief-occupant-form";
 
 type TProps = {
-  occupant: TChiefOccupant;
+  dependant: TDependant;
   closeModal: () => void;
 };
 
-export const EditChiefOccupant = ({ occupant, closeModal }: TProps) => {
+export const EditDependantForm = ({ dependant, closeModal }: TProps) => {
   const { form, handleSubmit, isPending, uploading, file, setFile, isSuccess } =
-    useEditChiefOccupantForm(occupant);
+    useEditDependantForm(dependant);
 
   useEffect(() => {
     if (isSuccess) {
@@ -40,15 +41,6 @@ export const EditChiefOccupant = ({ occupant, closeModal }: TProps) => {
 
         <Grid.Col span={12}>
           <TextInput
-            value={occupant.apartmentId.identification}
-            label="Apartment"
-            withAsterisk
-            disabled
-          />
-        </Grid.Col>
-
-        <Grid.Col span={12}>
-          <TextInput
             placeholder="Enter the full name"
             label="Full Name"
             withAsterisk
@@ -58,25 +50,45 @@ export const EditChiefOccupant = ({ occupant, closeModal }: TProps) => {
           />
         </Grid.Col>
 
-        <Grid.Col span={12}>
+        <Grid.Col span={6}>
           <TextInput
             placeholder="Enter the contact number"
             label="Contact Number"
-            withAsterisk
             disabled={isPending}
             key={form.key("contactNumber")}
             {...form.getInputProps("contactNumber")}
           />
         </Grid.Col>
 
-        <Grid.Col span={12}>
+        <Grid.Col span={6}>
           <TextInput
             placeholder="Enter the Email"
             label="Email"
-            withAsterisk
             disabled={isPending}
             key={form.key("email")}
             {...form.getInputProps("email")}
+          />
+        </Grid.Col>
+
+        <Grid.Col span={6}>
+          <TextInput
+            placeholder="Ex: sister, daughter, son, father etc..."
+            label="Relationship"
+            withAsterisk
+            disabled={isPending}
+            key={form.key("relationship")}
+            {...form.getInputProps("relationship")}
+          />
+        </Grid.Col>
+
+        <Grid.Col span={6}>
+          <DateInput
+            maxDate={new Date()}
+            label="Date of Birth"
+            withAsterisk
+            disabled={isPending}
+            key={form.key("dateOfBirth")}
+            {...form.getInputProps("dateOfBirth")}
           />
         </Grid.Col>
 

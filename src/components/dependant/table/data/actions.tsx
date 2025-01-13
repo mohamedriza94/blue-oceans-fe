@@ -3,6 +3,7 @@ import { DependantModal } from "@/components/dependant/dependant-modal";
 import { TDependant } from "../dependant-table";
 import { useRef } from "react";
 import { RiDeleteBinLine, RiEditLine } from "@remixicon/react";
+import { EditDependantModal } from "../../edit-dependant-modal";
 
 type TProps = {
   dependant: TDependant;
@@ -29,6 +30,11 @@ export const TdActions = ({ dependant }: TProps) => {
           <RiDeleteBinLine />
         </ActionIcon>
       </Group>
+
+      <EditDependantModal
+        dependant={dependant}
+        updateModalRef={updateModalRef}
+      />
     </>
   );
 };
