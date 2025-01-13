@@ -2,6 +2,7 @@ import { ActionIcon, Menu } from "@mantine/core";
 import { RiEditLine, RiMore2Fill } from "@remixicon/react";
 import { useRef } from "react";
 import { TApartment } from "../apartment-table";
+import { EditApartmentModal } from "../../edit-apartment/edit-apartment-modal";
 
 type TProps = {
   apartment: TApartment;
@@ -28,6 +29,11 @@ export const TdActions = ({ apartment }: TProps) => {
           </Menu.Item>
         </Menu.Dropdown>
       </Menu>
+
+      <EditApartmentModal
+        apartment={apartment}
+        updateModalRef={updateModalRef}
+      />
     </>
   );
 };

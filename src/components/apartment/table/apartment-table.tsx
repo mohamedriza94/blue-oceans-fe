@@ -1,11 +1,13 @@
-import { Badge, rem, Stack, Table, Text } from "@mantine/core";
+import { Badge, Flex, Image, rem, Stack, Table, Text } from "@mantine/core";
 import { ApartmentTableSkeleton } from "./table-skeleton";
 import { TdActions } from "./data/actions";
 import { TableError } from "@/shared/components/table-error";
 import { CustomPagination } from "@/shared/components/pagination";
 import { TImage } from "@/shared/types/image";
+import { showDefaultImage } from "@/shared/utils/show-default-image";
 
 export type TApartment = {
+  _id: string;
   buildingId: {
     _id: string;
     buildingName: string;
@@ -75,12 +77,20 @@ export const ApartmentTable = ({
                 apartments.map((apartment, index) => (
                   <Table.Tr key={index + apartment.identification}>
                     <Table.Td>
-                      <Text
-                        lineClamp={1}
-                        title={apartment.buildingId.buildingName}
-                      >
-                        {apartment.buildingId.buildingName}
-                      </Text>
+                      <Flex gap={"xs"} align={"center"}>
+                        <Image
+                          radius={"sm"}
+                          src={showDefaultImage(apartment.images ?? [])}
+                          maw={60}
+                          mah={30}
+                        />
+                        <Text
+                          lineClamp={1}
+                          title={apartment.buildingId.buildingName}
+                        >
+                          {apartment.buildingId.buildingName}
+                        </Text>
+                      </Flex>
                     </Table.Td>
 
                     <Table.Td>

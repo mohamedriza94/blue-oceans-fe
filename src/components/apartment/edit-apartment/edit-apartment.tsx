@@ -1,37 +1,30 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import {
   apartmentClasses,
   apartmentStatuses,
-  useAddBuildingForm,
 } from "../hooks/add-apartment/use-add-apartment-form";
 import { Fieldset, Grid, Select, Textarea, TextInput } from "@mantine/core";
-import { ActionButtons } from "./action-buttons";
 import { fieldsetStyles } from "@/components/common/form-fieldset-style";
 import { CustomDropzone } from "@/shared/components/custom-dropzone";
-import { useGetBuildings } from "@/components/building/hooks/use-read-buildings-api";
-import { TBuilding } from "@/components/building/table";
+import { TApartment } from "../table";
+import { ActionButtons } from "../add-apartment/action-buttons";
+import { useEditApartmentForm } from "../hooks/edit-apartment/use-edit-apartment-form";
 
 type TProps = {
+  apartment: TApartment;
   closeModal: () => void;
 };
 
-type TOption = {
-  label: string;
-  value: string;
-};
-
-export const AddApartment = ({ closeModal }: TProps) => {
-  const { data: buildingData } = useGetBuildings(100);
-
+export const EditApartment = ({ apartment, closeModal }: TProps) => {
   const {
     form,
     handleSubmit,
     isPending,
     isSuccess,
-    files,
-    setFiles,
+    allFiles,
+    setAllFiles,
     resetForm,
-  } = useAddBuildingForm();
+  } = useEditApartmentForm(apartment);
 
   useEffect(() => {
     if (isSuccess) {
@@ -39,36 +32,16 @@ export const AddApartment = ({ closeModal }: TProps) => {
     }
   }, [isSuccess]);
 
-  // Get buildings and set the options for the Select component
-  const [buildingsList, setBuildingsList] = useState<TOption[]>([]);
-
-  useEffect(() => {
-    if (buildingData?.data.data.buildings) {
-      const list: TOption[] = buildingData.data.data.buildings.map(
-        (building: TBuilding) => ({
-          label: building.buildingName,
-          value: building._id,
-        }),
-      );
-      setBuildingsList(list);
-    }
-  }, [buildingData]);
-
   return (
     <form onSubmit={form.onSubmit(handleSubmit)}>
       <Grid gutter="xs">
         <Grid.Col span={12}>
-          <Select
-            data={buildingsList}
-            placeholder="Select building"
+          <TextInput
             label="Building"
-            withAsterisk
-            disabled={isPending}
-            key={form.key("buildingId")}
-            {...form.getInputProps("buildingId")}
+            value={apartment.buildingId.buildingName}
+            disabled
           />
         </Grid.Col>
-
         <Grid.Col span={12}>
           <Textarea
             placeholder="Enter the description"
@@ -83,8 +56,8 @@ export const AddApartment = ({ closeModal }: TProps) => {
         <Grid.Col span={12}>
           <Fieldset legend="Images" styles={fieldsetStyles} variant="filled">
             <CustomDropzone
-              files={files}
-              setFiles={setFiles}
+              files={allFiles}
+              setFiles={setAllFiles}
               isUploading={isPending}
             />
           </Fieldset>
@@ -129,8 +102,7 @@ export const AddApartment = ({ closeModal }: TProps) => {
             data={apartmentStatuses}
             placeholder="Select apartment status"
             label="Status"
-            withAsterisk
-            disabled={isPending}
+            disabled={form.values.status === "Occupied" || isPending}
             key={form.key("status")}
             {...form.getInputProps("status")}
           />
