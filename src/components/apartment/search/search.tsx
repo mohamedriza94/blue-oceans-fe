@@ -6,7 +6,6 @@ import { ActionIcon, Select, Tooltip } from "@mantine/core";
 import { RiAddLine } from "@remixicon/react";
 import { AddApartment } from "../add-apartment";
 import { useRef } from "react";
-import { SelectBuilding } from "./select-building";
 
 type TProps = {
   applyFilters: (newFilters: Partial<TApartmentQueryParams>) => void;

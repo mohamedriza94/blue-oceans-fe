@@ -6,8 +6,8 @@ import qs from "query-string";
 import { useState } from "react";
 
 export type TApartmentQueryParams = {
-  buildingId?: string;
-  identification?: string;
+  buildingId?: string | null;
+  identification?: string | null;
   status?: "Available" | "Occupied" | "Maintenance" | null;
   class?: "Luxury" | "Standard" | "Studio" | "Penthouse" | "Duplex" | null;
 } & TPaginationParams;
@@ -28,16 +28,15 @@ const getApartmentsQueryOptions = ({
   return queryOptions({
     queryKey: ["apartments-list", filteredQuery],
     queryFn: () => fetchData(filteredQuery),
-    staleTime: 600000,
   });
 };
 
 export const useGetApartments = () => {
   const initialFilters: TApartmentQueryParams = {
-    buildingId: undefined,
-    identification: undefined,
-    status: undefined,
-    class: undefined,
+    buildingId: null,
+    identification: null,
+    status: null,
+    class: null,
     page: 1,
     limit: 10,
   };
