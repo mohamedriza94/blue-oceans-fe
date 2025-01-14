@@ -19,6 +19,11 @@ export const protectedPaths = {
     path: "/chief-occupant",
     name: "Chief Occupants",
   },
+  lease: {
+    icon: "RiFilePaper2Fill",
+    path: "/lease",
+    name: "Lease",
+  },
   // reservation: {
   //   icon: "RiCalendarEventFill",
   //   path: "/reservation",

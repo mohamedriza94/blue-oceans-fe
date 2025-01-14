@@ -4,12 +4,19 @@ import { TableError } from "@/shared/components/table-error";
 import { CustomPagination } from "@/shared/components/pagination";
 import { ChiefOccupantTableSkeleton } from "./table-skeleton";
 import { TdAvatar } from "./data/avatar";
+import { TImage } from "@/shared/types/image";
 
 export type TChiefOccupant = {
   _id: string;
   apartmentId: {
     _id: string;
     identification: string;
+    class: "Luxury" | "Standard" | "Studio" | "Penthouse" | "Duplex";
+    status: "Available" | "Occupied" | "Maintenance";
+    buildingId: string;
+    telephone: string;
+    images?: TImage[];
+    description: string;
   };
   image: string;
   fullName: string;

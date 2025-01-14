@@ -12,15 +12,21 @@ export type TDependant = {
   _id: string;
 } & TDependentPayload;
 
-const columns = [
-  "Name",
-  "Relationship",
-  "Contact Number",
-  "Date of Birth",
-  "Actions",
-];
+export const DependantTable = ({
+  occupantId,
+  hideActions,
+}: {
+  occupantId: string;
+  hideActions?: boolean;
+}) => {
+  const columns = [
+    "Name",
+    "Relationship",
+    "Contact Number",
+    "Date of Birth",
+    "Actions",
+  ];
 
-export const DependantTable = ({ occupantId }: { occupantId: string }) => {
   const { data, isPending, isError } = useGetDependants(occupantId);
 
   return (
@@ -79,9 +85,13 @@ export const DependantTable = ({ occupantId }: { occupantId: string }) => {
                     </Table.Td>
 
                     {/* Actions */}
-                    <Table.Td>
-                      <TdActions dependant={dependant} />
-                    </Table.Td>
+                    {hideActions ? (
+                      <></>
+                    ) : (
+                      <Table.Td>
+                        <TdActions dependant={dependant} />
+                      </Table.Td>
+                    )}
                   </Table.Tr>
                 ))
               )}
