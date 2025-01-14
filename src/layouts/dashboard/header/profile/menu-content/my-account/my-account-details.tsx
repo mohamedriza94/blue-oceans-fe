@@ -1,8 +1,8 @@
-import { TStaffMember } from "@/shared/stores/user-store";
+import { TChiefOccupant } from "@/components/chief-occupant/table";
 import { Avatar, Indicator, rem, Stack, TextInput } from "@mantine/core";
 
 type MyAccountDetailsProps = {
-  myAccount: TStaffMember | undefined;
+  myAccount: TChiefOccupant | undefined;
 };
 
 export const MyAccountDetails = ({ myAccount }: MyAccountDetailsProps) => {
@@ -17,19 +17,20 @@ export const MyAccountDetails = ({ myAccount }: MyAccountDetailsProps) => {
   return (
     <>
       <Stack align="center" gap="xs" mt="sm">
-        <Indicator color="green.5" size={rem(15)} offset={12}>
-          <Avatar size={rem(100)} src={myAccount?.avatar} />
+        <Indicator
+          color={myAccount?.status == "Active" ? "green.5" : "red.5"}
+          size={rem(15)}
+          offset={12}
+        >
+          <Avatar size={rem(100)} src={myAccount?.image} />
         </Indicator>
       </Stack>
 
       <Stack gap="xs" mt="sm">
         <TextInput
           readOnly
-          label="Roles"
-          value={myAccount?.roles
-            ?.map((role) => role.charAt(0).toUpperCase() + role.slice(1))
-            .join(" | ")}
-          tt="capitalize"
+          label="Apartment"
+          value={myAccount?.apartmentId?.identification || "NA"}
           styles={inputStyles}
         />
         <TextInput
@@ -42,6 +43,12 @@ export const MyAccountDetails = ({ myAccount }: MyAccountDetailsProps) => {
           readOnly
           label="Full Name"
           value={myAccount?.fullName || ""}
+          styles={inputStyles}
+        />
+        <TextInput
+          readOnly
+          label="Contact Number"
+          value={myAccount?.contactNumber || ""}
           styles={inputStyles}
         />
       </Stack>

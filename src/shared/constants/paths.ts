@@ -29,6 +29,26 @@ export const protectedPaths = {
     path: "/application",
     name: "Applications",
   },
+  co_dashboard: {
+    icon: "RiDashboardFill",
+    path: "/co/dashboard",
+    name: "Dashboard",
+  },
+  co_application: {
+    icon: "RiFileList3Fill",
+    path: "/co/application",
+    name: "My Applications",
+  },
+  co_lease: {
+    icon: "RiFileShield2Fill",
+    path: "/co/lease",
+    name: "My Lease",
+  },
+  co_rent: {
+    icon: "RiWallet3Fill",
+    path: "/co/rent",
+    name: "My Rent",
+  },
 };
 
 // ------------------------------------------------------------------------

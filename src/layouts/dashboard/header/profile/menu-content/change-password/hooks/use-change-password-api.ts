@@ -1,12 +1,11 @@
 import { TChangePasswordPayload } from "./use-change-password-form";
 import { useMutation } from "@tanstack/react-query";
-import { TReturnObj } from "@/shared/types/response";
 import { ShowErrors } from "@/shared/utils/show-errors";
 import { axiosPrivate } from "@/shared/lib/axios/private";
 
 const changePasswordPostFn = async (data: TChangePasswordPayload) => {
   const response = await axiosPrivate.post(
-    "/reset-password/update-password",
+    "/password/update-password",
     data,
   );
   return response.data;

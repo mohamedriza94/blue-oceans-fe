@@ -3,6 +3,7 @@ import { NavLink, rem, Stack, Tooltip } from "@mantine/core";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { protectedPaths } from "@/shared/constants/paths";
+import { useUserTypeStore } from "@/shared/stores/user-type-store";
 
 type MenuItemsListProps = {
   isMinimized: boolean;
@@ -10,44 +11,51 @@ type MenuItemsListProps = {
 
 export const MenuItemsList = ({ isMinimized }: MenuItemsListProps) => {
   const { pathname } = useRouter();
+  const { userType } = useUserTypeStore();
 
   const renderMenuItems = () => {
-    return Object.values(protectedPaths).map((menuItem, index) => {
-      const isActive = pathname === menuItem.path;
+    return Object.entries(protectedPaths)
+      .filter(([key]) =>
+        userType === "chief-occupant"
+          ? key.startsWith("co_")
+          : !key.startsWith("co_"),
+      )
+      .map(([_, menuItem], index) => {
+        const isActive = pathname === menuItem.path;
 
-      const activeColor = isActive
-        ? "var(--mantine-color-blue-5)"
-        : "var(--mantine-color-darkBrown-6)";
+        const activeColor = isActive
+          ? "var(--mantine-color-blue-5)"
+          : "var(--mantine-color-darkBrown-6)";
 
-      return (
-        <Tooltip
-          label={menuItem.name}
-          key={`${menuItem.name}-${index}`}
-          position="right-end"
-          className="menu-items-custom-class"
-        >
-          <NavLink
-            c={activeColor}
-            color="blue.6"
-            fw={600}
-            component={Link}
-            active={isActive}
-            defaultOpened={isActive}
-            passHref
-            href={menuItem.path}
-            label={isMinimized ? "" : menuItem.name}
-            childrenOffset={15}
-            style={{
-              borderRadius: rem(5),
-            }}
-            leftSection={getIconComponent(menuItem.icon, {
-              color: activeColor,
-              size: 20,
-            })}
-          ></NavLink>
-        </Tooltip>
-      );
-    });
+        return (
+          <Tooltip
+            label={menuItem.name}
+            key={`${menuItem.name}-${index}`}
+            position="right-end"
+            className="menu-items-custom-class"
+          >
+            <NavLink
+              c={activeColor}
+              color="blue.6"
+              fw={600}
+              component={Link}
+              active={isActive}
+              defaultOpened={isActive}
+              passHref
+              href={menuItem.path}
+              label={isMinimized ? "" : menuItem.name}
+              childrenOffset={15}
+              style={{
+                borderRadius: rem(5),
+              }}
+              leftSection={getIconComponent(menuItem.icon, {
+                color: activeColor,
+                size: 20,
+              })}
+            ></NavLink>
+          </Tooltip>
+        );
+      });
   };
 
   return (

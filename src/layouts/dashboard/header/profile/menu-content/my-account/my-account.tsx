@@ -2,9 +2,12 @@ import { Stack, Text } from "@mantine/core";
 import { useGetMyAccountDetails } from "../../hooks/get-my-account-details-api";
 import { MyAccountSkeleton } from "./my-account-skeleton";
 import { MyAccountDetails } from "./my-account-details";
+import { useEffect } from "react";
 
 export const MyAccount = () => {
   const { data: myAccount, isLoading } = useGetMyAccountDetails();
+
+  useEffect(()=>{console.log('myAccount', myAccount)},[myAccount])
 
   return (
     <Stack align="stretch" justify="flex-start" gap="xs">

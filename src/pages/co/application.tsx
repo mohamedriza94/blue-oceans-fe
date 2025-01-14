@@ -1,17 +1,16 @@
-import { ApartmentComponent } from "@/components/apartment";
 import { protectedPaths } from "@/shared/constants/paths";
 import useBreadcrumbStore from "@/shared/stores/breadcrumb-store";
 import Head from "next/head";
 import { useEffect } from "react";
 
-export default function Apartment() {
+export default function Application() {
   const { setBreadcrumbs } = useBreadcrumbStore();
 
   useEffect(() => {
     setBreadcrumbs([
       {
-        label: "Apartment",
-        href: protectedPaths.apartment.path,
+        label: "Application",
+        href: protectedPaths.co_application.path,
       },
     ]);
   }, []);
@@ -19,9 +18,8 @@ export default function Apartment() {
   return (
     <>
       <Head>
-        <title>Apartment</title>
+        <title>Application</title>
       </Head>
-      <ApartmentComponent />
     </>
   );
 }
