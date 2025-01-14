@@ -1,3 +1,4 @@
+import { CoApplication } from "@/components/co/application";
 import { protectedPaths } from "@/shared/constants/paths";
 import useBreadcrumbStore from "@/shared/stores/breadcrumb-store";
 import Head from "next/head";
@@ -20,6 +21,7 @@ export default function Application() {
       <Head>
         <title>Application</title>
       </Head>
+      <CoApplication />
     </>
   );
 }

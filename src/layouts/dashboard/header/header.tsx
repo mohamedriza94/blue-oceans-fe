@@ -8,6 +8,7 @@ import { protectedPaths } from "@/shared/constants/paths";
 import { useRouter } from "next/router";
 import { unslugText } from "@/shared/utils/unslug";
 import { SetStateAction } from "react";
+import { useUserTypeStore } from "@/shared/stores/user-type-store";
 
 type DashboardHeaderProps = {
   toggleMinimized: (value?: SetStateAction<boolean> | undefined) => void;
@@ -18,8 +19,10 @@ export const DashboardHeader = ({
   isMinimized,
   toggleMinimized,
 }: DashboardHeaderProps) => {
+  const { userType } = useUserTypeStore();
   const { pathname } = useRouter();
-  const firstPathSegment = unslugText(pathname.split("/")[1]) || "";
+  const firstPathSegment =
+    unslugText(pathname.split("/")[userType == "chief-occupant" ? 2 : 1]) || "";
 
   const sidePadding = "xs";
 

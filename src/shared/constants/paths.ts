@@ -19,26 +19,26 @@ export const protectedPaths = {
     path: "/chief-occupant",
     name: "Chief Occupants",
   },
-  reservation: {
-    icon: "RiCalendarEventFill",
-    path: "/reservation",
-    name: "Reservations",
-  },
-  application: {
-    icon: "RiFileList3Fill",
-    path: "/application",
-    name: "Applications",
-  },
+  // reservation: {
+  //   icon: "RiCalendarEventFill",
+  //   path: "/reservation",
+  //   name: "Reservations",
+  // },
+  // application: {
+  //   icon: "RiFileList3Fill",
+  //   path: "/application",
+  //   name: "Applications",
+  // },
   co_dashboard: {
     icon: "RiDashboardFill",
     path: "/co/dashboard",
     name: "Dashboard",
   },
-  co_application: {
-    icon: "RiFileList3Fill",
-    path: "/co/application",
-    name: "My Applications",
-  },
+  // co_application: {
+  //   icon: "RiFileList3Fill",
+  //   path: "/co/application",
+  //   name: "My Applications",
+  // },
   co_lease: {
     icon: "RiFileShield2Fill",
     path: "/co/lease",
