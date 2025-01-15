@@ -51,7 +51,7 @@ export const CreateLease = () => {
           </Fieldset>
         </Grid.Col>
 
-        <Grid.Col span={4}>
+        {/* <Grid.Col span={4}>
           <Select
             data={Object.values(ENUMPaymentSchedule)}
             placeholder="Select Payment Schedule"
@@ -60,6 +60,19 @@ export const CreateLease = () => {
             disabled={isPending}
             key={form.key("paymentSchedule")}
             {...form.getInputProps("paymentSchedule")}
+          />
+        </Grid.Col> */}
+
+        <Grid.Col span={4}>
+          <NumberInput
+            placeholder="How many additional parking slots do you need?"
+            label="Additional Parking Slots"
+            withAsterisk
+            disabled={isPending}
+            min={0}
+            clampBehavior="strict"
+            key={form.key("additionalParkingSlots")}
+            {...form.getInputProps("additionalParkingSlots")}
           />
         </Grid.Col>
 

@@ -52,6 +52,7 @@ export const useCreateLeaseForm = () => {
       securityDepositInUSD: 0,
       termsAndConditions: "",
       documentURLs: [],
+      additionalParkingSlots: 0,
     },
     validate: zodResolver(ZOD_leaseSchema),
   });

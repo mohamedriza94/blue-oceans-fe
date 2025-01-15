@@ -26,6 +26,7 @@ export type TLeasePayload = {
   securityDepositInUSD: number;
   termsAndConditions: string;
   documentURLs?: TImage[];
+  additionalParkingSlots: number;
 };
 
 const postFn = async (data: Partial<TLeasePayload>) => {
