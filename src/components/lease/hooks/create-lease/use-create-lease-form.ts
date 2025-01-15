@@ -13,6 +13,7 @@ import {
   TLeasePayload,
   useCreateLeaseApi,
 } from "./use-create-lease-api";
+import { TLeaseAgreementData } from "./lease-agreement";
 
 export const ZOD_leaseSchema: z.ZodType<Partial<TLeasePayload>> = z.object({
   apartmentId: z.string().nonempty("Apartment ID is required"),
@@ -35,6 +36,9 @@ export const useCreateLeaseForm = () => {
   const queryClient = useQueryClient();
   const { mutate, ...createLeaseApiData } = useCreateLeaseApi();
   const { handleUpload, uploading } = useCloudinaryCustomBulkUpload();
+
+  const [leaseAgrmntData, setLeaseAgrmntData] =
+    useState<TLeaseAgreementData | null>(null);
 
   const [files, setFiles] = useState<CustomFile[]>([]);
 
@@ -63,17 +67,11 @@ export const useCreateLeaseForm = () => {
     mutate(
       { ...values, documentURLs: uploadedFiles },
       {
-        onSuccess: () => {
+        onSuccess: (response: any) => {
+          console.log("response", response.data);
+          setLeaseAgrmntData(response?.data || null);
           queryClient.invalidateQueries({ queryKey: ["lease-list"] });
           // form.reset();
-
-          showAlert({
-            type: "success",
-            defaultChildrenTexts: {
-              headerText: "Lease Created",
-            },
-            showCloseButton: false,
-          });
         },
       },
     );
@@ -92,6 +90,7 @@ export const useCreateLeaseForm = () => {
     files,
     setFiles,
     isPending: uploading || createLeaseApiData.isPending,
+    leaseAgrmntData,
   };
 };
 aborted;
