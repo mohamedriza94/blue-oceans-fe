@@ -61,6 +61,18 @@ export const AddBuilding = ({ closeModal }: TProps) => {
             {...form.getInputProps("parkingSlots")}
           />
         </Grid.Col>
+        <Grid.Col span={12}>
+          <NumberInput
+            placeholder="Price per extra parking slot"
+            label="How much do you charge for each extra parking slot for an apartment? (USD)"
+            withAsterisk
+            disabled={isPending}
+            min={0}
+            clampBehavior="strict"
+            key={form.key("chargePerExtraParkingSlotInUSD")}
+            {...form.getInputProps("chargePerExtraParkingSlotInUSD")}
+          />
+        </Grid.Col>
         <Grid.Col span={12} mt={"xs"}>
           <ActionButtons
             isPending={isPending}

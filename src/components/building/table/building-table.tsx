@@ -1,4 +1,4 @@
-import { Badge, rem, Stack, Table, Text } from "@mantine/core";
+import { Badge, NumberFormatter, rem, Stack, Table, Text } from "@mantine/core";
 import { BuildingTableSkeleton } from "./table-skeleton";
 import { TdActions } from "./data/actions";
 import { TableError } from "@/shared/components/table-error";
@@ -10,6 +10,7 @@ export type TBuilding = {
   telephone: string;
   address: string;
   parkingSlots: number;
+  chargePerExtraParkingSlotInUSD: number;
 };
 
 type TBuildingWithApartmentCount = TBuilding & {
@@ -34,6 +35,7 @@ const columns = [
   "Telephone",
   "Apartments",
   "Parking Slots",
+  "Charge Per Extra Parking Slot",
   "Actions",
 ];
 
@@ -92,6 +94,15 @@ export const BuildingTable = ({
                     <Table.Td>
                       <Badge fz={"sm"} variant="light" color="blue.6">
                         {building.parkingSlots}
+                      </Badge>
+                    </Table.Td>
+
+                    <Table.Td>
+                      <Badge fz={"sm"} variant="outline" color="blue.6">
+                        <NumberFormatter
+                          prefix="$"
+                          value={building.chargePerExtraParkingSlotInUSD}
+                        />
                       </Badge>
                     </Table.Td>
 

@@ -9,6 +9,7 @@ export type TBuildingPayload = {
   telephone: string;
   address: string;
   parkingSlots: number;
+  chargePerExtraParkingSlotInUSD: number;
 };
 
 export const ZOD_buildingSchema: z.ZodType<TBuildingPayload> = z.object({
@@ -16,6 +17,9 @@ export const ZOD_buildingSchema: z.ZodType<TBuildingPayload> = z.object({
   telephone: z.string().regex(/^\d{10,15}$/, "Invalid telephone number"),
   address: z.string().min(1, "Address is required"),
   parkingSlots: z.number().min(0, "Parking slots must be 0 or more"),
+  chargePerExtraParkingSlotInUSD: z
+    .number()
+    .min(0, "Charge per extra parking slot must be at least 0"),
 });
 
 export type FormValues = z.infer<typeof ZOD_buildingSchema>;
@@ -31,6 +35,7 @@ export const useAddBuildingForm = () => {
       telephone: "",
       address: "",
       parkingSlots: 0,
+      chargePerExtraParkingSlotInUSD: 0,
     },
     validate: zodResolver(ZOD_buildingSchema),
   });

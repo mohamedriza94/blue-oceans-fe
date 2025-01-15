@@ -12,6 +12,9 @@ export const ZOD_buildingSchema: z.ZodType<TBuildingWithoutParkingSlots> =
     buildingName: z.string().min(1, "Building name is required"),
     telephone: z.string().regex(/^\d{10,15}$/, "Invalid telephone number"),
     address: z.string().min(1, "Address is required"),
+    chargePerExtraParkingSlotInUSD: z
+      .number()
+      .min(0, "Charge per extra parking slot must be at least 0"),
   });
 
 export type FormValues = z.infer<typeof ZOD_buildingSchema>;
@@ -26,6 +29,7 @@ export const useUpdateBuildingForm = (building: TBuilding) => {
       buildingName: building.buildingName,
       telephone: building.telephone,
       address: building.address,
+      chargePerExtraParkingSlotInUSD: building.chargePerExtraParkingSlotInUSD,
     },
     validate: zodResolver(ZOD_buildingSchema),
   });
