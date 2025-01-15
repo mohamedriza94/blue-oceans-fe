@@ -16,6 +16,7 @@ type TProps = {
 
 const columns = [
   "Due Date",
+  "Penalty Amount",
   "Amount",
   "Payment Status",
   "Payment Date",
@@ -59,6 +60,13 @@ export const RentsOfLeaseTable = ({
                     </Table.Td>
 
                     <Table.Td>
+                      <NumberFormatter
+                        value={rent?.penaltyAmount || 0}
+                        suffix=" USD"
+                      />
+                    </Table.Td>
+
+                    <Table.Td>
                       <NumberFormatter value={rent.amount} suffix=" USD" />
                     </Table.Td>
 
@@ -85,7 +93,13 @@ export const RentsOfLeaseTable = ({
                     </Table.Td>
 
                     {/* Actions */}
-                    <Table.Td>{/* <TdActions lease={lease} /> */}</Table.Td>
+                    <Table.Td>
+                      {rent.paymentStatus == ENUMRentPaymentStatus.Paid ? (
+                        "NA"
+                      ) : (
+                        <TdActions rentId={rent._id} />
+                      )}
+                    </Table.Td>
                   </Table.Tr>
                 ))
               )}

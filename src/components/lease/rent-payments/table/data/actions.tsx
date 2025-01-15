@@ -1,41 +1,28 @@
-import { ActionIcon, Menu } from "@mantine/core";
-import { RiMoneyDollarCircleLine, RiMore2Fill } from "@remixicon/react";
-import { useRef } from "react";
-import { TLeaseItem } from "../../hooks/use-read-leases-api";
-import { RentPaymentsModal } from "../../rent-payments/rent-payments-modal";
+import { usePayRentForm } from "@/components/lease/hooks/pay-rent/use-pay-rent-form";
+import { Button } from "@mantine/core";
+import { useEffect } from "react";
 
 type TProps = {
-  lease: TLeaseItem;
+  rentId?: string;
 };
 
-export const TdActions = ({ lease }: TProps) => {
-  const rentPaymentModalRef = useRef<{ open: () => void; close: () => void }>(
-    null,
-  );
+export const TdActions = ({ rentId }: TProps) => {
+  const { isPending, handleSubmit, form } = usePayRentForm();
+  useEffect(() => {
+    form.setFieldValue("rentId", rentId ?? "");
+  }, [rentId]);
 
   return (
     <>
-      <Menu shadow="md" position="bottom-start" withArrow>
-        <Menu.Target>
-          <ActionIcon size={"md"} variant="subtle">
-            <RiMore2Fill />
-          </ActionIcon>
-        </Menu.Target>
-
-        <Menu.Dropdown>
-          <Menu.Item
-            onClick={() => rentPaymentModalRef.current?.open()}
-            leftSection={<RiMoneyDollarCircleLine />}
-          >
-            Rent Payments
-          </Menu.Item>
-        </Menu.Dropdown>
-      </Menu>
-
-      <RentPaymentsModal
-        leaseId={lease._id}
-        rentPaymentModalRef={rentPaymentModalRef}
-      />
+      <Button
+        size={"xs"}
+        radius={"md"}
+        disabled={isPending}
+        loading={isPending}
+        onClick={()=>handleSubmit(form.values)}
+      >
+        Pay
+      </Button>
     </>
   );
 };

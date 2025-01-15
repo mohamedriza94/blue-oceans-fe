@@ -11,6 +11,7 @@ export type TRent = {
   _id?: string;
   leaseId: string;
   dueDate: Date;
+  penaltyAmount?: number;
   amount: number;
   paymentStatus: ENUMRentPaymentStatus;
   paymentDate?: Date;
