@@ -1,21 +1,34 @@
 import { Stack } from "@mantine/core";
 import { SearchLease } from "./search";
-import { useForm, UseFormReturnType } from "@mantine/form";
+import { useGetLeases } from "./hooks/use-read-leases-api";
+import { LeasesTable } from "./table";
 
 export const LeaseComponent = () => {
-  const dummyForm: UseFormReturnType<any, (values: any) => any> = useForm({
-    initialValues: {
-      label: "",
-    },
-  });
+  const {
+    applyFilters,
+    data,
+    isPending,
+    isError,
+    form,
+    resetFilters,
+    paginate,
+  } = useGetLeases();
 
   return (
     <Stack>
       <SearchLease
-        applyFilters={() => {}}
-        resetFilters={() => {}}
-        isLoadingList={false}
-        form={dummyForm}
+        applyFilters={applyFilters}
+        form={form}
+        isLoadingList={isPending}
+        resetFilters={resetFilters}
+      />
+
+      <LeasesTable
+        isLoading={isPending}
+        leases={data?.data.data.leases}
+        pagination={data?.data.data.pagination}
+        paginate={paginate}
+        isError={isError}
       />
     </Stack>
   );
