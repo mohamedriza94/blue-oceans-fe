@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { Combobox, Flex, InputBase, Loader, useCombobox } from "@mantine/core";
 import { useDebouncedState } from "@mantine/hooks";
 import { useGetBuildings } from "@/components/building/hooks/use-read-buildings-api";
-import { TBuilding } from "../../table";
+import { TBuilding } from "@/components/building/table";
 
 type TProps = {
   setValue: (value: string | undefined) => void;
