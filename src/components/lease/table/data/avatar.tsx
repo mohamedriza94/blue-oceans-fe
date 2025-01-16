@@ -1,7 +1,7 @@
 import { Avatar, Flex, Stack, Text } from "@mantine/core";
 import { TChiefOccupant } from "../../hooks/create-lease/lease-agreement";
 
-export const TdAvatar = ({ occupant }: { occupant: TChiefOccupant }) => {
+export const TdAvatar = ({ occupant }: { occupant: Partial<TChiefOccupant> }) => {
   return (
     <Flex align={"center"} gap={"xs"}>
       <Avatar src={occupant.image} size={"md"} />

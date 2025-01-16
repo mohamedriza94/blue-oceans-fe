@@ -23,9 +23,15 @@ import { useEffect, useRef } from "react";
 
 type TProps = {
   leaseData: TLeaseAgreementData | null;
+  autoDownload?: boolean;
+  title?: string;
 };
 
-export const Receipt = ({ leaseData }: TProps) => {
+export const Receipt = ({
+  leaseData,
+  autoDownload = true,
+  title = "Lease Agreement Details",
+}: TProps) => {
   const pdfRef = useRef<HTMLDivElement>(null);
 
   const fieldsetStyles = {
@@ -54,13 +60,19 @@ export const Receipt = ({ leaseData }: TProps) => {
     const download = async () => {
       await downloadPDF();
     };
-    download();
+    if (autoDownload) {
+      download();
+    }
   }, []);
 
   return (
-    <>
-      <Stack p={"xl"} ref={pdfRef}>
-        <Title c={"blue.6"}>Lease Agreement Details</Title>
+    <Stack p={"xl"}>
+      <Button mt={"md"} onClick={downloadPDF} color="blue" variant="light">
+        Download as PDF
+      </Button>
+
+      <Stack ref={pdfRef}>
+        <Title c={"blue.6"}>{title}</Title>
         <Stack align="stretch" gap={"md"}>
           <Fieldset
             legend="Lease Info."
@@ -250,9 +262,6 @@ export const Receipt = ({ leaseData }: TProps) => {
           </Fieldset>
         </Stack>
       </Stack>
-      <Button mt={"md"} onClick={downloadPDF} color="blue">
-        Download as PDF
-      </Button>
-    </>
+    </Stack>
   );
 };

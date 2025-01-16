@@ -23,6 +23,7 @@ export const usePayRentForm = () => {
     mutate(values, {
       onSuccess: () => {
         queryClient.invalidateQueries({ queryKey: ["rents-of-lease"] });
+        queryClient.invalidateQueries({ queryKey: ["ReadRentsForOccupant"] });
         resetForm();
         showAlert({
           type: "success",
