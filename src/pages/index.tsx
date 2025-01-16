@@ -4,7 +4,7 @@ import { GetServerSideProps } from "next";
 export const getServerSideProps: GetServerSideProps = async () => {
   return {
     redirect: {
-      destination: protectedPaths.dashboard,
+      destination: protectedPaths.dashboard.path,
       permanent: process.env.NODE_ENV === "development" ? false : true,
     },
   };
