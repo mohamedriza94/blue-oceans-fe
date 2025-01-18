@@ -16,6 +16,8 @@ export type TRent = {
   paymentStatus: ENUMRentPaymentStatus;
   paymentDate?: Date;
   remarks?: string;
+  paymentIntentId?: string;
+  clientSecret?: string;
 };
 
 const fetchData = (leaseId: string): Promise<{ data: { data: TRent[] } }> => {

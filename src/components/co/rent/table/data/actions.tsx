@@ -1,28 +1,15 @@
-import { usePayRentForm } from "@/components/lease/hooks/pay-rent/use-pay-rent-form";
-import { Button } from "@mantine/core";
-import { useEffect } from "react";
+import { TRent } from "@/components/lease/hooks/use-read-rents-of-lease-api";
+import { PayRentModal } from "@/components/pay-rent/pay-rent-modal";
 
 type TProps = {
-  rentId?: string;
+  rent?: TRent;
 };
 
-export const TdActions = ({ rentId }: TProps) => {
-  const { isPending, handleSubmit, form } = usePayRentForm();
-  useEffect(() => {
-    form.setFieldValue("rentId", rentId ?? "");
-  }, [rentId]);
+export const TdActions = ({ rent }: TProps) => {
+  // const { isPending, handleSubmit, form } = usePayRentForm();
+  // useEffect(() => {
+  //   form.setFieldValue("rentId", rentId ?? "");
+  // }, [rentId]);
 
-  return (
-    <>
-      <Button
-        size={"xs"}
-        radius={"md"}
-        disabled={isPending}
-        loading={isPending}
-        onClick={()=>handleSubmit(form.values)}
-      >
-        Pay
-      </Button>
-    </>
-  );
+  return <>{rent && <PayRentModal rent={rent} />}</>;
 };

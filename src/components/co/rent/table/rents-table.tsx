@@ -108,7 +108,7 @@ export const RentsTable = ({
                       {rent.paymentStatus == ENUMRentPaymentStatus.Paid ? (
                         "NA"
                       ) : (
-                        <TdActions rentId={rent._id} />
+                        <TdActions rent={rent} />
                       )}
                     </Table.Td>
                   </Table.Tr>
