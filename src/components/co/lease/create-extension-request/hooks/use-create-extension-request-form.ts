@@ -46,6 +46,9 @@ export const useCreateExtensionRequestForm = (
         queryClient.invalidateQueries({
           queryKey: ["read-detailed-occupant-lease"],
         });
+        queryClient.invalidateQueries({
+          queryKey: ["dashboard-details"],
+        });
         form.reset();
 
         showAlert({

@@ -1,3 +1,4 @@
+import { CoDashboardComponent } from "@/components/co/dashboard/dashboard";
 import { protectedPaths } from "@/shared/constants/paths";
 import useBreadcrumbStore from "@/shared/stores/breadcrumb-store";
 import Head from "next/head";
@@ -20,6 +21,7 @@ export default function Dashboard() {
       <Head>
         <title>Dashboard</title>
       </Head>
+      <CoDashboardComponent />
     </>
   );
 }

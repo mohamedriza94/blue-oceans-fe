@@ -30,8 +30,6 @@ export const DashboardComponent = () => {
   const leaseChartData: TLeaseChartDataItem[] | null =
     leaseChartDataUnprocessed?.data.data ?? null;
 
-    useEffect(()=>{console.log("data", leaseChartData)},[leaseChartDataUnprocessed])
-
   if (isLoading) {
     return (
       <Stack

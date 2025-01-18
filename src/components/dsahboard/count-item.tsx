@@ -4,7 +4,7 @@ export const CountItem = ({
   count,
   label,
 }: {
-  count: number;
+  count: number | string;
   label: string;
 }) => {
   return (
