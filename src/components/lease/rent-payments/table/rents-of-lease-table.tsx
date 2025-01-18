@@ -20,7 +20,7 @@ const columns = [
   "Amount",
   "Payment Status",
   "Payment Date",
-  "Actions",
+  // "Actions",
 ];
 
 export const RentsOfLeaseTable = ({
@@ -93,13 +93,13 @@ export const RentsOfLeaseTable = ({
                     </Table.Td>
 
                     {/* Actions */}
-                    <Table.Td>
+                    {/* <Table.Td>
                       {rent.paymentStatus == ENUMRentPaymentStatus.Paid ? (
                         "NA"
                       ) : (
                         <TdActions rentId={rent._id} />
                       )}
-                    </Table.Td>
+                    </Table.Td> */}
                   </Table.Tr>
                 ))
               )}
