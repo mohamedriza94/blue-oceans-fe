@@ -1,3 +1,4 @@
+import { DashboardComponent } from "@/components/dsahboard/dashboard";
 import { protectedPaths } from "@/shared/constants/paths";
 import useBreadcrumbStore from "@/shared/stores/breadcrumb-store";
 import Head from "next/head";
@@ -20,7 +21,7 @@ export default function Dashboard() {
       <Head>
         <title>Dashboard</title>
       </Head>
-      This is the dashboard <br></br>
+      <DashboardComponent />
     </>
   );
 }
