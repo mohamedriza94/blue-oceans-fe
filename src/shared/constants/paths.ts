@@ -24,6 +24,11 @@ export const protectedPaths = {
     path: "/lease",
     name: "Lease",
   },
+  extensionRequest: {
+    icon: "RiCalendarTodoFill",
+    path: "/extension-request",
+    name: "Extension Request",
+  },
   // reservation: {
   //   icon: "RiCalendarEventFill",
   //   path: "/reservation",

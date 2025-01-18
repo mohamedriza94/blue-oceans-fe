@@ -1,5 +1,7 @@
 // Type definitions for the Lease Agreement Data
 
+import { ENUMExtRequest } from "@/components/co/lease/create-extension-request/hooks/use-create-extension-request-api";
+
 // Document URL type
 type TDocumentURL = {
   url: string;
@@ -102,6 +104,15 @@ type TLease = {
   __v: number;
 };
 
+type TExtensionRequest = {
+  _id?: string;
+  leaseId: string;
+  requestedEndDate: Date;
+  reason: string;
+  status?: ENUMExtRequest;
+  requestedAt?: Date;
+}
+
 // Main Lease Agreement Data type
 export type TLeaseAgreementData = {
   lease: TLease;
@@ -111,4 +122,5 @@ export type TLeaseAgreementData = {
   dependants: TDependant[];
   parkingSlotCharges: number; // Additional parking charges in USD
   parkingSlotNumbers: string[]; // List of parking slot identifiers
+  extensionRequest?: TExtensionRequest;
 };

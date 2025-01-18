@@ -116,7 +116,6 @@ export const CreateLease = () => {
 
           <Grid.Col span={6}>
             <DateInput
-              maxDate={new Date()}
               label="Start Date"
               withAsterisk
               disabled={isPending}
@@ -127,7 +126,6 @@ export const CreateLease = () => {
 
           <Grid.Col span={6}>
             <DateInput
-              maxDate={new Date()}
               minDate={
                 form.values.startDate
                   ? new Date(
