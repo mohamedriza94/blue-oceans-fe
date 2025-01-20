@@ -53,7 +53,7 @@ export const CreateLease = () => {
           </Grid.Col>
 
           <Grid.Col span={12}>
-            <Fieldset legend="Images" styles={fieldsetStyles} variant="filled">
+            <Fieldset legend="Documents" styles={fieldsetStyles} variant="filled">
               <CustomDropzone
                 allowedTypes={["pdf", "word", "image"]}
                 files={files}
