@@ -30,6 +30,11 @@ export const DashboardComponent = () => {
   const leaseChartData: TLeaseChartDataItem[] | null =
     leaseChartDataUnprocessed?.data.data ?? null;
 
+  useEffect(
+    () => console.log("leaseChartData", leaseChartDataUnprocessed?.data.data),
+    [leaseChartDataUnprocessed],
+  );
+
   if (isLoading) {
     return (
       <Stack
@@ -164,18 +169,16 @@ export const DashboardComponent = () => {
 
       {leaseChartData && (
         <Paper p={"xs"}>
-          <Stack gap={"md"} align="center">
-            <Text fw={600} c={"blue.6"} size="xl">
-              Lease Agreements starting in {currentYear}
-            </Text>
-            <BarChart
-              h={300}
-              data={leaseChartData}
-              dataKey="month"
-              series={[{ name: "leases", color: "green.6" }]}
-              tickLine="y"
-            />
-          </Stack>
+          <Text fw={600} c={"blue.6"} mb={'xs'} size="xl" ta={'center'}>
+            Lease Agreements starting in {currentYear}
+          </Text>
+          <BarChart
+            h={300}
+            data={leaseChartData}
+            dataKey="month"
+            series={[{ name: "leases", color: "green.6" }]}
+            tickLine="y"
+          />
         </Paper>
       )}
     </Stack>
