@@ -38,6 +38,7 @@ export const SelectChiefOccupant = ({
 
   const handleSelectChiefOccupant = (occupant: TChiefOccupant) => {
     setSelectedOccupant(occupant);
+    close();
     form.setFieldValue("apartmentId", occupant.apartmentId._id);
     form.setFieldValue("chiefOccupantId", occupant._id);
   };
@@ -56,7 +57,7 @@ export const SelectChiefOccupant = ({
         placeholder="Enter chief occupant name"
         onChange={(e) => applyFilters({ fullName: e.target.value })}
         onFocus={open}
-        onBlur={close}
+        // onBlur={close}
       />
 
       <Collapse in={opened}>
